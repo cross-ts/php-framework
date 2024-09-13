@@ -17,7 +17,7 @@ RUN --mount=type=bind,source=composer.json,target=composer.json \
     --mount=type=bind,source=composer.lock,target=composer.lock \
     composer install
 
-FROM php AS runtime
+FROM builder AS runtime
 COPY --from=builder /app/vendor /app/vendor
 COPY . /app
 CMD ["php-fpm", "--pid", "/var/run/php-fpm.pid"]

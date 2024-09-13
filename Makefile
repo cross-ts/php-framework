@@ -30,6 +30,9 @@ $(UP_CACHE): $(BUILD_CACHE)
 	@$(DOCKER_COMPOSE) up -d --remove-orphans
 	@$(DOCKER_COMPOSE) cp app:/var/run/php-fpm.pid $@
 
+vendor: $(UP_CACHE)
+	@$(DOCKER_COMPOSE) cp app:/app/vendor ./
+
 .PHONY: down
 down:
 	@$(DOCKER_COMPOSE) down --volumes --remove-orphans
