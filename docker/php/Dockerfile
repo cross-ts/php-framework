@@ -4,7 +4,7 @@ ARG COMPOSER_VERSION
 
 FROM composer:${COMPOSER_VERSION} AS composer
 
-FROM php:${PHP_VERSION} AS php
+FROM php:${PHP_VERSION}-fpm AS php
 WORKDIR /app
 RUN --mount=type=cache,target=/var/cache/apt \
     apt-get update \

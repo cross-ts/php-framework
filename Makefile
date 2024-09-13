@@ -16,7 +16,7 @@ DOCKER_COMPOSE = docker compose --file compose.yml
 
 .PHONY: build
 build: $(BUILD_CACHE)
-$(BUILD_CACHE): Dockerfile composer.lock
+$(BUILD_CACHE): docker/php/Dockerfile composer.lock
 	@mkdir -p $(@D)
 	@$(DOCKER_COMPOSE) build \
 		--build-arg PHP_VERSION=$(PHP_VERSION) \
