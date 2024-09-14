@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 require_once '../vendor/autoload.php';
 
-use GuzzleHttp\Psr7\Response;
+use App\App;
+use GuzzleHttp\Psr7\ServerRequest;
 
-$response = new Response(body: '<h1>Hello, World!</h1>');
-echo $response->getBody()->getContents();
+$app = new App();
+
+$request = ServerRequest::fromGlobals();
+$response = $app->handle($request);
+
+echo $response->getBody();

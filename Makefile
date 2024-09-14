@@ -41,3 +41,9 @@ down:
 .PHONY: shell
 shell: $(UP_CACHE)
 	@$(DOCKER_COMPOSE) exec app bash
+
+.PHONY: clean
+clean:
+	@$(MAKE) down
+	@rm -rf vendor
+	@rm -rf $(CACHE_HOME)

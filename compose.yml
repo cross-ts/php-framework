@@ -16,6 +16,7 @@ services:
 
   nginx:
     image: nginx:alpine
+    init: true
     ports:
       - "8080:80"
     volumes:
